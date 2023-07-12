@@ -7,37 +7,42 @@ resource "azurerm_backup_policy_vm" "this" {
   instant_restore_retention_days = var.instant_restore_retention_days
 
   backup {
-    frequency     = var.backup_fequency
-    time          = var.backup_time
-    hour_interval = var.backup_hour_interval
-    hour_duration = var.backup_hour_duration
-    weekdays      = var.backup_weekdays
-  }
-
-  instant_restore_resource_group {
-    prefix = var.instant_restore_resource_group_prefix
-    suffix = var.instant_restore_resource_group_suffix
+    frequency = var.backup_fequency  
+    time      = var.backup_time     
   }
 
   retention_daily {
-    count = var.retention_daily_count
+    count = var.daily_count  
   }
 
-  retention_monthly {
-    count             = var.retention_monthly_count
-    weekday           = var.retention_monthly_weekday
-    weeks             = var.retention_monthly_weeks
-    days              = var.retention_monthly_days
-    include_last_days = var.retention_monthly_include_last_days
-  }
 
-  retention_yearly {
-    count             = var.retention_yearly_count
-    months            = var.retention_yearly_months
-    weekdays          = var.retention_yearly_weekdays
-    weeks             = var.retention_yearly_weeks
-    days              = var.retention_yearly_days
-    include_last_days = var.retention_yearly_include_last_days
+dynamic "retention_weekly" {
+  for_each = var.weekly_count == 0 ? [] : [1]
+  content {
+    count    = var.weekly_count  
+    weekdays = var.weekly_weekdays  
+  }
+  
+}
+
+dynamic "retention_monthly" {
+  for_each = var.monthly_count == 0 ? [] : [1]
+  content {
+    count    = var.monthly_count  
+    weekdays = var.monthly_weekdays  
+    weeks    = var.monthly_weeks
+  }
+  
+}
+  dynamic "retention_yearly" {
+    for_each = var.yearly_count == 0 ? [] : [1]
+    content {
+      count    = var.yearly_count  
+      weekdays = var.yearly_weekdays  
+      weeks    = var.yearly_weeks 
+      months   = var.yearly_months
+    }
+    
   }
 }
   
