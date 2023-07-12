@@ -40,30 +40,23 @@ No modules.
 | Name | Description | Type | Required |
 |------|-------------|------|:--------:|
 | backup\_policy\_name | The name of the backup policy. | `string` | yes |
-| recovery\_vault\_name | The name of the recovery vault in which the backup policy is created. | `string` | yes |
-| resource\_group\_name | the name of the resource group in which the backup policy is created. | `string` | yes |
-| backup\_fequency | The backup frequency. | `string` | no |
-| backup\_hour\_duration | The duration of the backup in hours. | `number` | no |
-| backup\_hour\_interval | The interval between backups in hours. | `number` | no |
-| backup\_time | The time of the day to perform the backup. | `string` | no |
-| backup\_weekdays | The weekdays on which the backup is performed. | `list(string)` | no |
-| instant\_restore\_resource\_group\_prefix | The prefix of the resource group to create for instant restore points. | `string` | no |
-| instant\_restore\_resource\_group\_suffix | The suffix of the resource group to create for instant restore points. | `string` | no |
+| recovery\_vault\_name | The name of the recovery vault. | `string` | yes |
+| resource\_group\_name | The name of the resource group. | `string` | yes |
+| backup\_fequency | The frequency of the backup. | `string` | no |
+| backup\_time | The time of day to perform the backup. | `string` | no |
+| daily\_count | The number of daily backups to retain. | `number` | no |
 | instant\_restore\_retention\_days | The number of days to retain instant restore points. | `number` | no |
+| monthly\_count | The number of monthly backups to retain. | `number` | no |
+| monthly\_weekdays | The weekdays on which to perform monthly backups. | `list(string)` | no |
+| monthly\_weeks | The weeks of the month on which to perform monthly backups. | `list(string)` | no |
 | policy\_type | The type of the backup policy. | `string` | no |
-| retention\_daily\_count | The number of daily backups to retain. | `number` | no |
-| retention\_monthly\_count | The number of monthly backups to retain. | `number` | no |
-| retention\_monthly\_days | The number of days to retain monthly backups. | `number` | no |
-| retention\_monthly\_include\_last\_days | Whether to include the last day of the month in the monthly backup. | `bool` | no |
-| retention\_monthly\_weekday | The weekday on which the monthly backup is performed. | `string` | no |
-| retention\_monthly\_weeks | The number of weeks to retain monthly backups. | `number` | no |
-| retention\_yearly\_count | The number of yearly backups to retain. | `number` | no |
-| retention\_yearly\_days | The number of days to retain yearly backups. | `number` | no |
-| retention\_yearly\_include\_last\_days | Whether to include the last day of the year in the yearly backup. | `bool` | no |
-| retention\_yearly\_months | The months on which the yearly backup is performed. | `number` | no |
-| retention\_yearly\_weekdays | The weekdays on which the yearly backup is performed. | `string` | no |
-| retention\_yearly\_weeks | The number of weeks to retain yearly backups. | `number` | no |
 | timezone | The timezone of the backup policy. | `string` | no |
+| weekly\_count | The number of weekly backups to retain. | `number` | no |
+| weekly\_weekdays | The weekdays on which to perform weekly backups. | `list(string)` | no |
+| yearly\_count | The number of yearly backups to retain. | `number` | no |
+| yearly\_months | The months of the year on which to perform yearly backups. | `list(string)` | no |
+| yearly\_weekdays | The weekdays on which to perform yearly backups. | `list(string)` | no |
+| yearly\_weeks | The weeks of the year on which to perform yearly backups. | `list(string)` | no |
 
 ## Outputs
 
