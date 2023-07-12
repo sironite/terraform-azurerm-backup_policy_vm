@@ -1,0 +1,43 @@
+formatter: markdown table
+
+header-from: "docs/header-doc.tf"
+footer-from: "docs/footer-doc.tf" 
+
+content: |-
+  {{ .Header }}
+
+  # Usage - Module
+
+  ## Network Watcher Flow Log
+  ```hcl
+  {{ include "examples/network-watcher-flow-log-example/main.tf" }}
+  ```
+
+  {{ .Providers }}
+
+  {{ .Modules }}
+
+  {{ .Resources }}
+
+  {{ .Inputs }}  
+
+  {{ .Outputs }}
+
+  {{ .Footer }}
+
+output:
+  file: README.md
+  mode: inject
+
+sort:
+  enabled: true
+  by: required
+
+settings:
+  anchor: false
+  color: true
+  default: false
+  description: true
+  indent: 2
+  required: true
+  type: true
