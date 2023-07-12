@@ -8,9 +8,10 @@ content: |-
 
   # Usage - Module
 
-  ## Network Watcher Flow Log
+  ##  Azure Backup VM Backup Policy
+  
   ```hcl
-  {{ include "examples/network-watcher-flow-log-example/main.tf" }}
+  {{ include "examples/backup-vm-backup-policy-example/main.tf" }}
   ```
 
   {{ .Providers }}
