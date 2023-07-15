@@ -22,7 +22,7 @@ variable "policy_type" {
 variable "timezone" {
   type        = string
   description = "The timezone of the backup policy."
-  default     = "(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna"
+  default     = "W. Europe Standard Time"
 }
 
 variable "instant_restore_retention_days" {
