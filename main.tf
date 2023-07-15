@@ -7,42 +7,42 @@ resource "azurerm_backup_policy_vm" "this" {
   instant_restore_retention_days = var.instant_restore_retention_days
 
   backup {
-    frequency = var.backup_fequency  
-    time      = var.backup_time     
+    frequency = var.backup_fequency
+    time      = var.backup_time
   }
 
   retention_daily {
-    count = var.daily_count  
+    count = var.daily_count
   }
 
 
-dynamic "retention_weekly" {
-  for_each = var.weekly_count == 0 ? [] : [1]
-  content {
-    count    = var.weekly_count  
-    weekdays = var.weekly_weekdays  
-  }
-  
-}
+  dynamic "retention_weekly" {
+    for_each = var.weekly_count == 0 ? [] : [1]
+    content {
+      count    = var.weekly_count
+      weekdays = var.weekly_weekdays
+    }
 
-dynamic "retention_monthly" {
-  for_each = var.monthly_count == 0 ? [] : [1]
-  content {
-    count    = var.monthly_count  
-    weekdays = var.monthly_weekdays  
-    weeks    = var.monthly_weeks
   }
-  
-}
+
+  dynamic "retention_monthly" {
+    for_each = var.monthly_count == 0 ? [] : [1]
+    content {
+      count    = var.monthly_count
+      weekdays = var.monthly_weekdays
+      weeks    = var.monthly_weeks
+    }
+
+  }
   dynamic "retention_yearly" {
     for_each = var.yearly_count == 0 ? [] : [1]
     content {
-      count    = var.yearly_count  
-      weekdays = var.yearly_weekdays  
-      weeks    = var.yearly_weeks 
+      count    = var.yearly_count
+      weekdays = var.yearly_weekdays
+      weeks    = var.yearly_weeks
       months   = var.yearly_months
     }
-    
+
   }
 }
   
